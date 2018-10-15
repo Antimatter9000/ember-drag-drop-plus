@@ -1,0 +1,15 @@
+{
+  "name": "ember-accessible-dragdrop",
+  "version": "0.1.0",
+  "keywords": [
+    "ember-addon",
+    "ember-cli-deploy-plugin"
+  ],
+  "dependencies": {
+    "ember-cli-babel": "^6.12.0",
+    "ember-cli-htmlbars": "^2.0.3"
+  },
+  "devDependencies": {
+    "ember-cli-htmlbars-inline-precompile": "^0.3.13"
+  }
+}
