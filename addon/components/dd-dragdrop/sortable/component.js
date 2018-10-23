@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import Droppable from './droppable';
-import layout from '../../templates/components/dd-dragdrop/sortable';
+import Droppable from '../droppable/component';
+import layout from './template';
 
 export default Droppable.extend({
     layout,

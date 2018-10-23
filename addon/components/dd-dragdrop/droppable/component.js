@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../../templates/components/dd-dragdrop/droppable';
+import layout from './template';
 
 export default Ember.Component.extend({
     layout,
@@ -9,7 +9,7 @@ export default Ember.Component.extend({
     tabindex: '0',
     content: 'This content will be replaced',
     contentType: 'html',
-    dragDropService: Ember.inject.service('dd-dragdropservice'),
+    dragDropService: Ember.inject.service('dd-service'),
 
     isCurrentDropTarget: false,
     replaceContent: false,

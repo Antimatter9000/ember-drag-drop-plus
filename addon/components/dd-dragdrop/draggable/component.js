@@ -1,10 +1,9 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
-import JPMABaseMixin from '../../mixins/jpma-base';
-import layout from '../../templates/components/dd-dragdrop/draggable';
+import layout from './template';
 
-export default Component.extend(JPMABaseMixin, {
+export default Component.extend({
     layout,
     classNames: ['dd-draggable'],
     classNameBindings: ['grabbed:dd-dragging'],
@@ -14,7 +13,7 @@ export default Component.extend(JPMABaseMixin, {
     ariaDropEffect: 'move',
     isSortable: 'true',
 
-    dragDropService: inject('dd-dragdropservice'),
+    dragDropService: inject('dd-service'),
 
     grabbed: false,
 

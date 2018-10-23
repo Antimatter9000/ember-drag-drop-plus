@@ -1,1 +1,1 @@
-export { default } from 'ember-accessible-dragdrop/dd-service/service';
+export { default } from 'ember-drag-drop-plus/dd-service/service';
