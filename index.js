@@ -2,9 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-accessible-dragdrop',
-
-  isDevelopingAddon() {
-    return true;
-  }
+  name: 'ember-drag-drop-plus'
 };

@@ -1,0 +1,120 @@
+{{#demo-reference component=model showOption="showOption"}}
+    {{#if (eq model.currentOption 'draggable')}}
+
+        {{#freestyle-usage "draggable" title="dd-dragdrop/draggable"}}
+{{#dd-dragdrop/draggable}}
+    Draggable Content
+{{/dd-dragdrop/draggable}}
+        {{/freestyle-usage}}
+        {{#freestyle-note "draggable--notes"}}
+This is an example of the draggable component
+        {{/freestyle-note}}
+
+    {{else if (eq model.currentOption 'droppable')}}
+
+        {{#freestyle-usage "droppable" title="dd-dragdrop/droppable"}}
+{{#dd-dragdrop/draggable contentType="html"}}
+    Draggable Content
+{{/dd-dragdrop/draggable}}
+
+{{dd-dragdrop/droppable title="Drop Zone" replaceContent=true}}
+        {{/freestyle-usage}}
+        {{#freestyle-note "droppable--notes"}}
+This is an example of the droppable component
+        {{/freestyle-note}}
+
+    {{else if (eq model.currentOption 'sortable')}}
+
+        {{#freestyle-usage "sortable" title="dd-dragdrop/sortable"}}
+{{#dd-dragdrop/sortable sortableObjectList=model.sortableObjects}}
+    {{#each model.sortableObjects as |item|}}
+        {{#dd-dragdrop/draggable content=item}}
+            {{item.name}}
+        {{/dd-dragdrop/draggable}}
+    {{/each}}
+{{/dd-dragdrop/sortable}}
+        {{/freestyle-usage}}
+        {{#freestyle-note "sortable--notes"}}
+You can put draggable objects in the sortable component and move them about with an action.
+        {{/freestyle-note}}
+
+    {{else if (eq model.currentOption 'contextual')}}
+
+        {{#freestyle-usage "contextual" title="dd-dragdrop/contextual"}}
+{{#dd-dragdrop as |dd|}}
+    {{#dd.sortable sortableObjectList=model.sortableObjects}}
+        {{#each model.sortableObjects as |item|}}
+            {{#dd.draggable content=item}}
+                {{item.name}}
+            {{/dd.draggable}}
+        {{/each}}
+    {{/dd.sortable}}
+{{/dd-dragdrop}}
+        {{/freestyle-usage}}
+        {{#freestyle-note "contextual--notes"}}
+For a neater naming scheme, you can use the dd-dragdrop components as contextual components.
+        {{/freestyle-note}}
+
+    {{else if (eq model.currentOption 'sortableHTML')}}
+
+        {{#freestyle-usage "sortableHTML" title="Sortable HTML"}}
+{{#dd-dragdrop as |dd|}}
+    <ul>
+        {{#dd.sortable contentType='html'}}
+            <li><strong>Non draggable title</strong></li>
+            {{#dd.draggable contentType="html"}}<li>Item 1</li>{{/dd.draggable}}
+            {{#dd.draggable contentType="html"}}<li>Item 2</li>{{/dd.draggable}}
+            {{#dd.draggable contentType="html"}}<li>Item 3</li>{{/dd.draggable}}
+            {{#dd.draggable contentType="html"}}<li>Item 4</li>{{/dd.draggable}}
+            {{#dd.draggable contentType="html"}}<li>Item 5</li>{{/dd.draggable}}
+        {{/dd.sortable}}
+    </ul>
+{{/dd-dragdrop}}
+        {{/freestyle-usage}}
+        {{#freestyle-note "sortableHTML--notes"}}
+Setting the contentType of the sortable component to 'html' will allow you to add your content manually and still be able to sort through it.
+
+In this case, it will reorganise the draggable components that are included in the sortable component
+        {{/freestyle-note}}
+
+    {{else if (eq model.currentOption 'multiple')}}
+
+        {{#freestyle-usage "multiple" title="Multiple sortable components"}}
+{{#dd-dragdrop as |dd|}}
+    {{#dd.sortable
+        class="col-sm-2"
+        sortableObjectList=model.sortableObjects}}
+            {{#each model.sortableObjects as |item|}}
+                {{#dd.draggable content=item}}
+                    {{item.name}}
+                {{/dd.draggable}}
+            {{/each}}
+    {{/dd.sortable}}
+
+    {{#dd.sortable
+        class="col-sm-2"
+        sortableObjectList=model.sortableObjects2}}
+            {{#each model.sortableObjects2 as |item|}}
+                {{#dd.draggable content=item}}
+                    {{item.name}}
+                {{/dd.draggable}}
+            {{/each}}
+    {{/dd.sortable}}
+
+    {{#dd.sortable
+        class="col-sm-2"
+        sortableObjectList=model.sortableObjects3}}
+            {{#each model.sortableObjects3 as |item|}}
+                {{#dd.draggable content=item}}
+                    {{item.name}}
+                {{/dd.draggable}}
+            {{/each}}
+    {{/dd.sortable}}
+{{/dd-dragdrop}}
+        {{/freestyle-usage}}
+        {{#freestyle-note "multiple--notes"}}
+You can pass draggable objects between sortable lists.
+        {{/freestyle-note}}
+
+    {{/if}}
+{{/demo-reference}}

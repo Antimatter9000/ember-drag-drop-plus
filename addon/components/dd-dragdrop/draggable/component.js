@@ -1,10 +1,9 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
-import JPMABaseMixin from '../../mixins/jpma-base';
-import layout from '../../templates/components/dd-dragdrop/draggable';
+import layout from './template';
 
-export default Component.extend(JPMABaseMixin, {
+export default Component.extend({
     layout,
     classNames: ['dd-draggable'],
     classNameBindings: ['grabbed:dd-dragging'],
@@ -14,7 +13,7 @@ export default Component.extend(JPMABaseMixin, {
     ariaDropEffect: 'move',
     isSortable: 'true',
 
-    dragDropService: inject('dd-dragdropservice'),
+    dragDropService: inject('dd-service'),
 
     grabbed: false,
 
@@ -82,8 +81,8 @@ export default Component.extend(JPMABaseMixin, {
     },
 
     _keyEventsToPerformRegardless(event) {
-        switch (event.originalEvent.keyCode) {
-        case this.get('keyNamesToCodes')['SPACE']:
+        switch (event.originalEvent.code) {
+        case 'Space':
             this.attemptGrab(event);
             event.preventDefault();
             break;
@@ -91,50 +90,50 @@ export default Component.extend(JPMABaseMixin, {
     },
 
     _keyEventsToPerfromWhenGrabbed(event) {
-        switch (event.originalEvent.keyCode) {
+        switch (event.originalEvent.code) {
         case 'KeyM':
             this.doDrop();
             break;
-        case this.get('keyNamesToCodes')['ESC']:
+        case 'Escape':
             this.cancelDrag();
             break;
-        case this.get('keyNamesToCodes')['UP_ARROW']:
+        case 'ArrowUp':
             this.get('dragDropService').shift('up');
             break;
-        case this.get('keyNamesToCodes')['DOWN_ARROW']:
+        case 'ArrowDown':
             this.get('dragDropService').shift('down');
             break;
-        case this.get('keyNamesToCodes')['LEFT_ARROW']:
+        case 'ArrowLeft':
             this.get('dragDropService').transfer(this, 'left');
             break;
-        case this.get('keyNamesToCodes')['RIGHT_ARROW']:
+        case 'ArrowRight':
             this.get('dragDropService').transfer(this, 'right');
             break;
-        case this.get('keyNamesToCodes')['TAB']:
+        case 'Tab':
             this.set('grabbed', false);
             break;
         }
     },
 
     _keyEventsToPerformWhenNotGrabbed(event) {
-        switch (event.originalEvent.keyCode) {
-        case this.get('keyNamesToCodes')['UP_ARROW']:
+        switch (event.originalEvent.code) {
+        case 'ArrowUp':
             this.get('dragDropService').navigate(this, 'up');
             break;
-        case this.get('keyNamesToCodes')['DOWN_ARROW']:
+        case 'ArrowDown':
             this.get('dragDropService').navigate(this, 'down');
             break;
-        case this.get('keyNamesToCodes')['LEFT_ARROW']:
+        case 'ArrowLeft':
             this.get('dragDropService').navigate(this, 'left');
             break;
-        case this.get('keyNamesToCodes')['RIGHT_ARROW']:
+        case 'ArrowRight':
             this.get('dragDropService').navigate(this, 'right');
             break;
         }
     },
 
     _preventDefaultUnlessTab(event) {
-        const tab = event.originalEvent.keyCode === this.get('keyNamesToCodes')['TAB'];
+        const tab = event.originalEvent.code === 'Tab';
         if (!(event.shiftKey || tab)) {
             event.preventDefault();
         }

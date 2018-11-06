@@ -1,1 +1,1 @@
-export { default } from 'ember-accessible-dragdrop/components/dd-dragdrop/draggable/component';
+export { default } from 'ember-drag-drop-plus/components/dd-dragdrop/draggable/component';
