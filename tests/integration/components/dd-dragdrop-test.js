@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import jQuery from 'jquery';
 import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 // import a11yAudit from 'ember-a11y-testing/test-support/audit';

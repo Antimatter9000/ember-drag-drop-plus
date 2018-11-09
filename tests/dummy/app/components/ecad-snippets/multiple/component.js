@@ -8,7 +8,7 @@ export default Ember.Component.extend({
     {id: 2, name:'two'},
     {id: 3, name:'three'},
     {id: 4, name:'four'},
-    {id: 5, name:'five'}
+    // {id: 5, name:'five'}
   ]),
   sortableObjects2: Ember.A([
       {id: 6, name:'six'},
