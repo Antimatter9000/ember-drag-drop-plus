@@ -20,6 +20,7 @@ export default {
     },
 
     _insertDataCopy(entryIndex, list, content) {
+        debugger;
         list.removeObject(content);
         try {
             list.insertAt(entryIndex, content);

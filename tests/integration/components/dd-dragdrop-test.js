@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import jQuery from 'jquery';
+import jQuery from 'jquery'; 
 import { moduleForComponent, test, skip } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 // import a11yAudit from 'ember-a11y-testing/test-support/audit';
@@ -103,7 +103,7 @@ test('multiselect - selecting', function(assert) {
     assert.equal(this.$('.dd-draggable:nth-of-type(3)').text().trim(), 'item 3', 'item 3 is the 3rd item');
     this.$('.dd-draggable:nth-of-type(3)').trigger('mousedown');
     const upKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 38 },
+        originalEvent: { code: 'ArrowUp' },
         preventDefault: () => true
     });
     this.$('.dd-draggable:nth-of-type(3)').trigger(upKey);
@@ -159,7 +159,7 @@ test('multiselect - ctrlClick shifting up - ascending index order of clicks', fu
 
     const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
     const upKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 38 },
+        originalEvent: { code: 'ArrowUp' },
         preventDefault: () => false
     });
 
@@ -263,7 +263,7 @@ test('multiselect - ctrlClick shifting up - descending order of clicks', functio
 
     const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
     const upKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 38 },
+        originalEvent: { code: 'ArrowUp' },
         preventDefault: () => false
     });
 
@@ -367,7 +367,7 @@ test('multiselect - shiftClick shifting up - ascending index order of clicks', f
 
     const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
     const upKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 38 },
+        originalEvent: { code: 'ArrowUp' },
         preventDefault: () => false
     });
 
@@ -472,7 +472,7 @@ test('multiselect - shiftClick shifting up - descending index order of clicks', 
 
     const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
     const upKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 38 },
+        originalEvent: { code: 'ArrowUp' },
         preventDefault: () => false
     });
 
@@ -577,7 +577,7 @@ test('multiselect - ctrlClick shifting down - ascending index order of clicks', 
 
     const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
     const downKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 40 },
+        originalEvent: { code: 'ArrowDown' },
         preventDefault: () => false
     });
 
@@ -677,7 +677,7 @@ test('multiselect - ctrlClick shifting down - descending index order of clicks',
 
     const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
     const downKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 40 },
+        originalEvent: { code: 'ArrowDown' },
         preventDefault: () => false
     });
 
@@ -777,7 +777,7 @@ test('multiselect - shiftClick shifting down - ascending index order of clicks',
 
     const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
     const downKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 40 },
+        originalEvent: { code: 'ArrowDown' },
         preventDefault: () => false
     });
 
@@ -882,7 +882,7 @@ test('multiselect - shiftClick shifting down - descending index order of clicks'
 
     const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
     const downKey = jQuery.Event('keydown', {
-        originalEvent: { keyCode: 40 },
+        originalEvent: { code: 'ArrowDown' },
         preventDefault: () => false
     });
 
