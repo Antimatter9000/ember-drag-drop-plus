@@ -19,7 +19,14 @@ export default {
 
     _insertDataCopy(entryIndex, list, content) {
         list.removeObject(content);
-        list.insertAt(entryIndex, content);
+        try {
+            list.insertAt(entryIndex, content);
+        }
+        catch(e) {
+            console.error(`entryIndex: ${entryIndex}`);
+            console.error(`content: ${content}`);
+            console.error(e);
+        }
     },
 
     _insertHTMLCopy(entryIndex, list, content) {
