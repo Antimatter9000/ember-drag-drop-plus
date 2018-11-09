@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default {
     // move up or down one in the list. triggered by keydown event in draggable
     shift(direction) {

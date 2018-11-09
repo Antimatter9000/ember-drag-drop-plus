@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default {
     // copy content to a specified index in the list
     copyToIndex(entryIndex, content) {

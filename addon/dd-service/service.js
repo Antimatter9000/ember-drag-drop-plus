@@ -1,8 +1,4 @@
 import Service from '@ember/service';
-import $ from 'jquery';
-import { A } from '@ember/array';
-import { computed } from '@ember/object';
-import { run } from '@ember/runloop';
 
 import base from './_base';
 import copyToIndex from './_copy-to-index';
