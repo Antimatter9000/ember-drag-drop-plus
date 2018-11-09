@@ -1,12 +1,15 @@
-import Ember from 'ember';
+import AddonDocsRouter, { docsRoute } from 'ember-cli-addon-docs/router';
 import config from './config/environment';
 
-const Router = Ember.Router.extend({
+const Router = AddonDocsRouter.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
 });
 
 Router.map(function() {
+  docsRoute(this, function() {
+    this.route('multiple');
+  });
 });
 
 export default Router;
