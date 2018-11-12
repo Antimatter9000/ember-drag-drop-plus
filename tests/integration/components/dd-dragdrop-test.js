@@ -33,19 +33,22 @@ test('it renders', function(assert) {
 });
 
 test('multiselect - selecting', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -110,9 +113,11 @@ test('multiselect - selecting', function(assert) {
     andThen(() => {
         assert.equal(this.$('.dd-draggable:nth-of-type(2)').text().trim(), 'item 3', 'item 3 is now the 2nd item');
         assert.ok(this.$('.dd-draggable:nth-of-type(2)').hasClass('dd-dragging'), 'item 3 is still selected');
+    });
 
+    andThen(() => {
         // shift clicking to list multiselect after rearranging items
-        this.$('.dd-draggable:nth-of-type(4)').trigger(shiftClick);
+        this.$('.dd-draggable:last-of-type').trigger(shiftClick);
     });
 
     andThen(() => {
@@ -124,22 +129,25 @@ test('multiselect - selecting', function(assert) {
 });
 
 test('multiselect - ctrlClick shifting up - ascending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -175,7 +183,9 @@ test('multiselect - ctrlClick shifting up - ascending index order of clicks', fu
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 5 is still grabbed after moving');
         assert.equal(this.$('.dd-draggable:nth-of-type(5)').text().trim(), 'item 4', 'item 4 moves down one position when item 5 is shifted up');
         assert.notOk(this.$('.dd-draggable:nth-of-type(5)').hasClass('dd-dragging'), 'item 4 is still ungrabbed after moving');
+    });
 
+    andThen(() => {
         this.$('.dd-draggable:nth-of-type(4)').trigger(upKey);
     });
 
@@ -228,22 +238,25 @@ test('multiselect - ctrlClick shifting up - ascending index order of clicks', fu
 });
 
 test('multiselect - ctrlClick shifting up - descending order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -279,8 +292,10 @@ test('multiselect - ctrlClick shifting up - descending order of clicks', functio
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 5 is still grabbed after moving');
         assert.equal(this.$('.dd-draggable:nth-of-type(5)').text().trim(), 'item 4', 'item 4 moves down one position when item 5 is shifted up');
         assert.notOk(this.$('.dd-draggable:nth-of-type(5)').hasClass('dd-dragging'), 'item 4 is still ungrabbed after moving');
+    });
 
-        this.$('.dd-draggable:nth-of-type(2)').trigger(upKey);
+    andThen(() => {
+        this.$('.dd-draggable:nth-of-type(4)').trigger(upKey);
     });
 
     andThen(() => {
@@ -332,22 +347,25 @@ test('multiselect - ctrlClick shifting up - descending order of clicks', functio
 });
 
 test('multiselect - shiftClick shifting up - ascending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -384,7 +402,9 @@ test('multiselect - shiftClick shifting up - ascending index order of clicks', f
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 5 is selected after upward shiftclick shift');
         assert.equal(this.$('.dd-draggable:nth-of-type(5)').text().trim(), 'item 2', 'item 2 has moved to position 5 after being moved by items 3, 4 and 5');
         assert.notOk(this.$('.dd-draggable:nth-of-type(5)').hasClass('dd-dragging'), 'item 2 is not selected after being moved by items 3, 4 and 5');
+    });
 
+    andThen(() => {
         $draggable.trigger(upKey);
     });
 
@@ -437,22 +457,25 @@ test('multiselect - shiftClick shifting up - ascending index order of clicks', f
 });
 
 test('multiselect - shiftClick shifting up - descending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -489,7 +512,9 @@ test('multiselect - shiftClick shifting up - descending index order of clicks', 
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 5 is selected after upward shiftclick shift');
         assert.equal(this.$('.dd-draggable:nth-of-type(5)').text().trim(), 'item 2', 'item 2 has moved to position 5 after being moved by items 3, 4 and 5');
         assert.notOk(this.$('.dd-draggable:nth-of-type(5)').hasClass('dd-dragging'), 'item 2 is not selected after being moved by items 3, 4 and 5');
+    });
 
+    andThen(() => {
         $draggable.trigger(upKey);
     });
 
@@ -542,22 +567,25 @@ test('multiselect - shiftClick shifting up - descending index order of clicks', 
 });
 
 test('multiselect - ctrlClick shifting down - ascending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -594,7 +622,9 @@ test('multiselect - ctrlClick shifting down - ascending index order of clicks', 
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 3 is still grabbed after moving');
         assert.equal(this.$('.dd-draggable:nth-of-type(3)').text().trim(), 'item 4', 'item 4 moves up one position when item 3 is shifted down');
         assert.notOk(this.$('.dd-draggable:nth-of-type(3)').hasClass('dd-dragging'), 'item 4 is still ungrabbed after moving');
+    });
 
+    andThen(() => {
         $draggable.trigger(downKey);
     });
 
@@ -642,22 +672,25 @@ test('multiselect - ctrlClick shifting down - ascending index order of clicks', 
 });
 
 test('multiselect - ctrlClick shifting down - descending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -694,8 +727,10 @@ test('multiselect - ctrlClick shifting down - descending index order of clicks',
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 3 is still grabbed after moving');
         assert.equal(this.$('.dd-draggable:nth-of-type(3)').text().trim(), 'item 4', 'item 4 moves up one position when item 3 is shifted down');
         assert.notOk(this.$('.dd-draggable:nth-of-type(3)').hasClass('dd-dragging'), 'item 4 is still ungrabbed after moving');
+    });
 
-        $draggable.trigger(downKey);
+    andThen(() => {
+        $draggable.trigger(downKey);;
     });
 
     andThen(() => {
@@ -742,22 +777,25 @@ test('multiselect - ctrlClick shifting down - descending index order of clicks',
 });
 
 test('multiselect - shiftClick shifting down - ascending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -794,7 +832,9 @@ test('multiselect - shiftClick shifting down - ascending index order of clicks',
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 3 is selected after downward shiftclick shift');
         assert.equal(this.$('.dd-draggable:nth-of-type(1)').text().trim(), 'item 4', 'item 4 has moved to position 1 after being moved by items 1, 2 and 3');
         assert.notOk(this.$('.dd-draggable:nth-of-type(1)').hasClass('dd-dragging'), 'item 4 is not selected after being moved by items 1, 2 and 3');
+    });
 
+    andThen(() => {
         $draggable.trigger(downKey);
     });
 
@@ -847,22 +887,25 @@ test('multiselect - shiftClick shifting down - ascending index order of clicks',
 });
 
 test('multiselect - shiftClick shifting down - descending index order of clicks', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }, {
-        id: 4,
-        value: 'item 5'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}
@@ -899,7 +942,9 @@ test('multiselect - shiftClick shifting down - descending index order of clicks'
         assert.ok(this.$('.dd-draggable:nth-of-type(4)').hasClass('dd-dragging'), 'item 3 is selected after downward shiftclick shift');
         assert.equal(this.$('.dd-draggable:nth-of-type(1)').text().trim(), 'item 4', 'item 4 has moved to position 1 after being moved by items 1, 2 and 3');
         assert.notOk(this.$('.dd-draggable:nth-of-type(1)').hasClass('dd-dragging'), 'item 4 is not selected after being moved by items 1, 2 and 3');
+    });
 
+    andThen(() => {
         $draggable.trigger(downKey);
     });
 
@@ -952,19 +997,25 @@ test('multiselect - shiftClick shifting down - descending index order of clicks'
 });
 
 test('sorting', function(assert) {
-    this.set('sortableObjectList', [{
-        id: 0,
-        value: 'item 1'
-    }, {
-        id: 1,
-        value: 'item 2'
-    }, {
-        id: 2,
-        value: 'item 3'
-    }, {
-        id: 3,
-        value: 'item 4'
-    }]);
+    const list = Ember.A([
+        {
+            id: 0,
+            value: 'item 1'
+        }, {
+            id: 1,
+            value: 'item 2'
+        }, {
+            id: 2,
+            value: 'item 3'
+        }, {
+            id: 3,
+            value: 'item 4'
+        }, {
+            id: 4,
+            value: 'item 5'
+        }
+    ]);
+    this.set('sortableObjectList', list);
 
     this.render(hbs`
         {{#dd-dragdrop as |dd|}}

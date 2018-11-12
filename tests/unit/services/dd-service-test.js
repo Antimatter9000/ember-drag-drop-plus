@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test, only } from 'ember-qunit';
 
-moduleFor('service:hc-dragdropservice', 'Unit | Service | hc dragdropservice', {
+moduleFor('service:dd-service', 'Unit | Service | dd dragdropservice', {
     // Specify the other units that are required for this test.
     // needs: ['service:foo']
     beforeEach() {
@@ -177,7 +177,7 @@ test('navigate', function(assert) {
     itemToFocusIndex = service._getTargetItemIndex(itemInfo, 'down');
     assert.equal(itemToFocusIndex, 0, 'target index = 0 when moving from the end of the list');
 
-    // tests for next steps in navigate appear in hc-dragdrop/sortable-test
+    // tests for next steps in navigate appear in dd-dragdrop/sortable-test
 });
 
 test('shift - data', function(assert) {

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import a11yAudit from 'ember-a11y-testing/test-support/audit';
+// import a11yAudit from 'ember-a11y-testing/test-support/audit';
 import startApp from '../../../helpers/start-app';
 
 let App;
