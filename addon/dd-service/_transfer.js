@@ -5,10 +5,8 @@ export default {
 
         if (this._canTransfer(target)) {
             this.setDropTarget(target);
-            console.log(this.get('draggedObjects'));
             const draggedObjects = this._orderDraggedObjects('up');
             draggedObjects.forEach(draggedObject => {
-                console.log('transferring', draggedObject.get('content.name'), 'to', target);
                 this._performTransfer(draggedObject, target);
             });
         }

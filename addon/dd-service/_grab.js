@@ -2,7 +2,6 @@ import { A } from '@ember/array';
 
 export default {
     attemptGrab(draggableObject, event) {
-        console.log('drag started');
         this._setMultiSelect(event);
         if (this._otherObjectsSelected(draggableObject).length && !this.get('multiSelect')) {
             this.clearDraggedObjects();

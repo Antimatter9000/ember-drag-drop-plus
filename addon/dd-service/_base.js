@@ -29,10 +29,9 @@ export default {
         });
     },
 
+    // used by shift() and transfer() to move stuff about by keyboard
     moveToIndex(draggedObject, targetIndex) {
-        console.log('moving ', draggedObject.get('content.name'), 'to', targetIndex);
         this.copyToIndex(targetIndex, draggedObject.get('content'));
-        console.log('it seems to do this fine');
         this.drop(draggedObject, true);
     },
 
