@@ -1,0 +1,15 @@
+.dd-draggable {
+    cursor: move;
+}
+
+.dd-dragging {
+    background-color: yellow;
+}
+
+.dd-droppable {
+    min-height: 1em;
+}
+
+.dd-droptarget {
+    outline: 2px solid red !important;
+}
