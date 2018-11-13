@@ -38,13 +38,6 @@ export default {
         });
     },
 
-    // find the emberObject with the requested content in the requested sortable component
-    _findEntry(dropTarget, content) {
-        return dropTarget.get('childViews').find(child => {
-            return child.get('content') === content;
-        });
-    },
-
     _getSortableChildViews(dropTarget) {
         return dropTarget.get('childViews').filter(child => {
             return child.get('isSortable');

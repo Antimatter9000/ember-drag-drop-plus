@@ -40,7 +40,7 @@ export default {
         return this.get('sortableChildViews').length === 0;
     },
 
-    // figure out where to put the draggedObject in the sortableObjectList
+    // figure out where to put the draggedObject in the targetList
     _getEntryIndex(event, currentHoveredItem) {
         if (this._dropTargetIsEmpty()) return 0;
         if (!currentHoveredItem) return this.get('sortableChildViews').length;

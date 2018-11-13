@@ -24,8 +24,7 @@ export default {
         const targetIndex = this._getTargetItemIndex(draggedObject, direction);
 
         if (this._canShift(list, itemIndex)) {
-            this.copyToIndex(targetIndex, content);
-            this.drop(draggedObject, true);
+            this.moveToIndex(draggedObject, targetIndex);
         }
     },
 

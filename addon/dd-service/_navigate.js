@@ -67,29 +67,6 @@ export default {
         };
     },
 
-    _getTargetList(currentSortable, direction) {
-        const sortables = this.get('scopedDropTargets');
-        const currentSortableIndex = sortables.indexOf(currentSortable);
-        const index = this._getTargetListIndex(sortables, currentSortableIndex, direction);
-        return sortables[index];
-    },
-
-    _getTargetListIndex(sortables, currentSortableIndex, direction) {
-        let index;
-        const lastSortableIndex = sortables.length - 1;
-
-        if (direction === 'left') {
-            index = currentSortableIndex - 1 >= 0
-                ? currentSortableIndex - 1
-                : lastSortableIndex;
-        } else if (direction === 'right') {
-            index = currentSortableIndex + 1 <= lastSortableIndex
-                ? currentSortableIndex + 1
-                : 0;
-        }
-        return index;
-    },
-
     _getItemToFocus(target) {
         return this._findEntry(target.list, target.content);
     },
