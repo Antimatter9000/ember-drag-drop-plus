@@ -10,7 +10,7 @@ export default {
     // inserts a copy of the draggedObject content into the sortable component
     // these copies get deleted on drop
     _insertCopy(entryIndex, content) {
-        const list = this.get('sortableObjectList');
+        const list = this.get('targetList');
 
         if (this.get('dropTarget').get('contentType') === 'data') {
             this._insertDataCopy(entryIndex, list, content);
@@ -20,8 +20,16 @@ export default {
     },
 
     _insertDataCopy(entryIndex, list, content) {
-        list.removeObject(content);
-        list.insertAt(entryIndex, content);
+        try {
+            list.removeObject(content);
+            list.insertAt(entryIndex, content);
+        } catch(e) {
+            if (e.message === 'Index out of range') {
+                console.error('Index out of range: requested entryIndex is: ', entryIndex);
+            } else {
+                console.error(e.message);
+            }
+        }
     },
 
     _insertHTMLCopy(entryIndex, list, content) {

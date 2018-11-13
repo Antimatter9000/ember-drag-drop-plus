@@ -8,7 +8,7 @@ export default {
             const content = draggedObject.get('content');
             this._dropDraggedObjects(content);
             if (this._draggedObjectHasMovedViews(draggedObject)) {
-                this._removeOriginalDraggedObject(content);
+                this._removeOriginalDraggedObject(draggedObject);
             }
             this._completeAction(selectCopy, content);
         }
@@ -23,15 +23,10 @@ export default {
         }
     },
 
-    _draggedObjectHasMovedViews(draggedObject) {
-        const draggedObjectParent = draggedObject.get('parentView');
-        return draggedObjectParent !== this.get('dropTarget');
-    },
-
-    _removeOriginalDraggedObject(content) {
+    _removeOriginalDraggedObject(draggedObject) {
         const contentType = this.get('dropTarget').get('contentType');
         if (contentType === 'data') {
-            this._removeOriginalDraggedObjectData(content);
+            this._removeOriginalDraggedObjectData(draggedObject.get('content'));
         } else if (contentType === 'html') {
             this._removeOriginalDraggedObjectHTML();
         }
@@ -62,6 +57,8 @@ export default {
         }
     },
 
+    // selects the object after a move to ensure that keyboard controls
+    // continue to work
     _selectCopy(content) {
         const dropTarget = this.get('dropTarget');
         const copy = this._findEntry(dropTarget, content);

@@ -1,11 +1,14 @@
 export default {
-    transfer(emberObject, direction) {
-        const currentSortable = emberObject.get('parentView');
+    transfer(callingObject, direction) {
+        const currentSortable = callingObject.get('parentView');
         const target = this._getTargetList(currentSortable, direction);
 
         if (this._canTransfer(target)) {
-            const content = emberObject.get('content');
-            this._performTransfer(content, target);
+            this.setDropTarget(target);
+            const draggedObjects = this._orderDraggedObjects('up');
+            draggedObjects.forEach(draggedObject => {
+                this._performTransfer(draggedObject, target);
+            });
         }
     },
 
@@ -14,10 +17,8 @@ export default {
         return dropTargetWillChange;
     },
 
-    _performTransfer(content, target) {
+    _performTransfer(draggedObject, target) {
         const targetListEnd = target.get('sortableObjectList').length;
-        this.setDropTarget(target);
-        this.copyToIndex(targetListEnd, content);
-        this.drop(true);
+        this.moveToIndex(draggedObject, targetListEnd);
     },
 }

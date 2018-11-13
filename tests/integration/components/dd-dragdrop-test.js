@@ -16,6 +16,29 @@ moduleForComponent('dd-dragdrop', 'Integration | Component | ddDragdrop', {
     }
 });
 
+const upKey = jQuery.Event('keydown', {
+    originalEvent: { code: 'ArrowUp' },
+    preventDefault: () => false
+});
+
+const downKey = jQuery.Event('keydown', {
+    originalEvent: { code: 'ArrowDown' },
+    preventDefault: () => false
+});
+
+const leftKey = jQuery.Event('keydown', {
+    originalEvent: { code: 'ArrowLeft' },
+    preventDefault: () => false
+});
+
+const rightKey = jQuery.Event('keydown', {
+    originalEvent: { code: 'ArrowRight' },
+    preventDefault: () => false
+});
+
+const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+const shiftClick = jQuery.Event('mousedown', { shiftKey: true }););
+
 test('it renders', function(assert) {
     this.render(hbs`{{dd-dragdrop}}`);
 
@@ -66,9 +89,6 @@ test('multiselect - selecting', function(assert) {
         {{/dd-dragdrop}}
     `);
 
-    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
-    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
-
     // basic rendering
     assert.equal(this.$('.dd-sortable').length, 1, 'it renders a sortable item');
     assert.equal(this.$('.dd-draggable').length, 4, 'it renders 4 draggable items');
@@ -105,10 +125,6 @@ test('multiselect - selecting', function(assert) {
     // clicking to deselect all but one item, using up key to move that item up one position
     assert.equal(this.$('.dd-draggable:nth-of-type(3)').text().trim(), 'item 3', 'item 3 is the 3rd item');
     this.$('.dd-draggable:nth-of-type(3)').trigger('mousedown');
-    const upKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowUp' },
-        preventDefault: () => true
-    });
     this.$('.dd-draggable:nth-of-type(3)').trigger(upKey);
     andThen(() => {
         assert.equal(this.$('.dd-draggable:nth-of-type(2)').text().trim(), 'item 3', 'item 3 is now the 2nd item');
@@ -164,12 +180,6 @@ test('multiselect - ctrlClick shifting up - ascending index order of clicks', fu
             {{/dd.sortable}}
         {{/dd-dragdrop}}
     `);
-
-    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
-    const upKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowUp' },
-        preventDefault: () => false
-    });
 
     this.$('.dd-draggable:nth-of-type(3)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(5)').trigger(ctrlClick);
@@ -274,12 +284,6 @@ test('multiselect - ctrlClick shifting up - descending order of clicks', functio
         {{/dd-dragdrop}}
     `);
 
-    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
-    const upKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowUp' },
-        preventDefault: () => false
-    });
-
     this.$('.dd-draggable:nth-of-type(5)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(3)').trigger(ctrlClick);
     this.$('.dd-draggable:nth-of-type(3)').trigger(upKey);
@@ -382,12 +386,6 @@ test('multiselect - shiftClick shifting up - ascending index order of clicks', f
             {{/dd.sortable}}
         {{/dd-dragdrop}}
     `);
-
-    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
-    const upKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowUp' },
-        preventDefault: () => false
-    });
 
     this.$('.dd-draggable:nth-of-type(3)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(5)').trigger(shiftClick);
@@ -493,12 +491,6 @@ test('multiselect - shiftClick shifting up - descending index order of clicks', 
         {{/dd-dragdrop}}
     `);
 
-    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
-    const upKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowUp' },
-        preventDefault: () => false
-    });
-
     this.$('.dd-draggable:nth-of-type(5)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(3)').trigger(shiftClick);
     const $draggable = this.$('.dd-draggable:nth-of-type(3)');
@@ -603,12 +595,6 @@ test('multiselect - ctrlClick shifting down - ascending index order of clicks', 
         {{/dd-dragdrop}}
     `);
 
-    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
-    const downKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowDown' },
-        preventDefault: () => false
-    });
-
     this.$('.dd-draggable:nth-of-type(1)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(3)').trigger(ctrlClick);
     const $draggable = this.$('.dd-draggable:nth-of-type(3)');
@@ -708,12 +694,6 @@ test('multiselect - ctrlClick shifting down - descending index order of clicks',
         {{/dd-dragdrop}}
     `);
 
-    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
-    const downKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowDown' },
-        preventDefault: () => false
-    });
-
     this.$('.dd-draggable:nth-of-type(3)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(1)').trigger(ctrlClick);
     const $draggable = this.$('.dd-draggable:nth-of-type(1)')
@@ -812,12 +792,6 @@ test('multiselect - shiftClick shifting down - ascending index order of clicks',
             {{/dd.sortable}}
         {{/dd-dragdrop}}
     `);
-
-    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
-    const downKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowDown' },
-        preventDefault: () => false
-    });
 
     this.$('.dd-draggable:nth-of-type(1)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(3)').trigger(shiftClick);
@@ -923,12 +897,6 @@ test('multiselect - shiftClick shifting down - descending index order of clicks'
         {{/dd-dragdrop}}
     `);
 
-    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
-    const downKey = jQuery.Event('keydown', {
-        originalEvent: { code: 'ArrowDown' },
-        preventDefault: () => false
-    });
-
     this.$('.dd-draggable:nth-of-type(3)').trigger('mousedown');
     this.$('.dd-draggable:nth-of-type(1)').trigger(shiftClick);
     const $draggable = this.$('.dd-draggable:nth-of-type(1)');
@@ -994,6 +962,223 @@ test('multiselect - shiftClick shifting down - descending index order of clicks'
         assert.equal(this.$('.dd-draggable:nth-of-type(4)').text().trim(), 'item 4', 'item 4 is back in its original position after 1, 2 and 3 complete journey');
         assert.equal(this.$('.dd-draggable:nth-of-type(5)').text().trim(), 'item 5', 'item 5 is back in its original position after 1, 2 and 3 complete journey');
     });
+});
+
+test('transfer - single item', function(assert) {
+    this.set('sortableObjectList1', Ember.A([{
+        id: 0,
+        value: 'item 1'
+    }, {
+        id: 1,
+        value: 'item 2'
+    }, {
+        id: 2,
+        value: 'item 3'
+    }, {
+        id: 3,
+        value: 'item 4'
+    }]));
+
+    this.set('sortableObjectList2', Ember.A([{
+        id: 4,
+        value: 'item 5'
+    }, {
+        id: 5,
+        value: 'item 6'
+    }, {
+        id: 6,
+        value: 'item 7'
+    }, {
+        id: 7,
+        value: 'item 8'
+    }]));
+
+    this.set('sortableObjectList3', Ember.A([{
+        id: 8,
+        value: 'item 9'
+    }, {
+        id: 9,
+        value: 'item 10'
+    }, {
+        id: 10,
+        value: 'item 11'
+    }, {
+        id: 11,
+        value: 'item 12'
+    }]));
+
+    this.render(hbs`
+        {{#dd-dragdrop as |dd|}}
+            {{#dd.sortable
+                sortableObjectList=sortableObjectList1
+                contentType="data"}}
+                {{#each sortableObjectList1 as |item|}}
+                    {{#dd.draggable
+                        contentType="data"
+                        content=item}}
+                        {{item.value}}
+                    {{/dd.draggable}}
+                {{/each}}
+            {{/dd.sortable}}
+
+            {{#dd.sortable
+                sortableObjectList=sortableObjectList2
+                contentType="data"}}
+                {{#each sortableObjectList2 as |item|}}
+                    {{#dd.draggable
+                        contentType="data"
+                        content=item}}
+                        {{item.value}}
+                    {{/dd.draggable}}
+                {{/each}}
+            {{/dd.sortable}}
+
+            {{#dd.sortable
+                sortableObjectList=sortableObjectList3
+                contentType="data"}}
+                {{#each sortableObjectList3 as |item|}}
+                    {{#dd.draggable
+                        contentType="data"
+                        content=item}}
+                        {{item.value}}
+                    {{/dd.draggable}}
+                {{/each}}
+            {{/dd.sortable}}
+        {{/dd-dragdrop}}
+    `);
+
+    const $draggable = this.$('.dd-draggable:nth-of-type(1)');
+    $draggable.trigger('mousedown');
+
+    $draggable.trigger(leftKey);
+    assert.equal(this.$('.dd-draggable:last-of-type', '.dd-sortable:nth-of-type(2)').text().trim(), 'item 1', 'the item has moved to the end of the second list after left transfer');
+
+    $draggable.trigger(leftKey);
+    assert.equal(this.$('.dd-draggable:last-of-type', '.dd-sortable:nth-of-type(3)').text().trim(), 'item 1', 'the item has moved to the end of the third list after second left transfer');
+
+    $draggable.trigger(leftKey);
+    assert.equal(this.$('.dd-draggable:last-of-type', '.dd-sortable:nth-of-type(1)').text().trim(), 'item 1', 'the item has moved to the end of the first list after third left transfer');
+
+    $draggable.trigger(rightKey);
+    assert.equal(this.$('.dd-draggable:last-of-type', '.dd-sortable:nth-of-type(3)').text().trim(), 'item 1', 'the item has moved to the end of the third list after right transfer');
+
+    $draggable.trigger(rightKey);
+    assert.equal(this.$('.dd-draggable:last-of-type', '.dd-sortable:nth-of-type(2)').text().trim(), 'item 1', 'the item has moved to the end of the second list after second right transfer');
+
+    $draggable.trigger(rightKey);
+    assert.equal(this.$('.dd-draggable:last-of-type', '.dd-sortable:nth-of-type(1)').text().trim(), 'item 1', 'the item has moved to the end of the first list after third right transfer');
+});
+
+test('transfer - multiple items', function(assert) {
+    this.set('sortableObjectList1', Ember.A([{
+        id: 0,
+        value: 'item 1'
+    }, {
+        id: 1,
+        value: 'item 2'
+    }, {
+        id: 2,
+        value: 'item 3'
+    }, {
+        id: 3,
+        value: 'item 4'
+    }]));
+
+    this.set('sortableObjectList2', Ember.A([{
+        id: 4,
+        value: 'item 5'
+    }, {
+        id: 5,
+        value: 'item 6'
+    }, {
+        id: 6,
+        value: 'item 7'
+    }, {
+        id: 7,
+        value: 'item 8'
+    }]));
+
+    this.set('sortableObjectList3', Ember.A([{
+        id: 8,
+        value: 'item 9'
+    }, {
+        id: 9,
+        value: 'item 10'
+    }, {
+        id: 10,
+        value: 'item 11'
+    }, {
+        id: 11,
+        value: 'item 12'
+    }]));
+
+    this.render(hbs`
+        {{#dd-dragdrop as |dd|}}
+            {{#dd.sortable
+                sortableObjectList=sortableObjectList1
+                contentType="data"}}
+                {{#each sortableObjectList1 as |item|}}
+                    {{#dd.draggable
+                        contentType="data"
+                        content=item}}
+                        {{item.value}}
+                    {{/dd.draggable}}
+                {{/each}}
+            {{/dd.sortable}}
+
+            {{#dd.sortable
+                sortableObjectList=sortableObjectList2
+                contentType="data"}}
+                {{#each sortableObjectList2 as |item|}}
+                    {{#dd.draggable
+                        contentType="data"
+                        content=item}}
+                        {{item.value}}
+                    {{/dd.draggable}}
+                {{/each}}
+            {{/dd.sortable}}
+
+            {{#dd.sortable
+                sortableObjectList=sortableObjectList3
+                contentType="data"}}
+                {{#each sortableObjectList3 as |item|}}
+                    {{#dd.draggable
+                        contentType="data"
+                        content=item}}
+                        {{item.value}}
+                    {{/dd.draggable}}
+                {{/each}}
+            {{/dd.sortable}}
+        {{/dd-dragdrop}}
+    `);
+
+    this.$('.dd-draggable:nth-of-type(1)').trigger('mousedown');
+    $draggable = this.$('.dd-draggable:nth-of-type(4)');
+    $draggable.trigger(ctrlClick);
+
+    $draggable.trigger(leftKey);
+    assert.equal(this.$('.dd-draggable:nth-of-type(5)', '.dd-sortable:nth-of-type(2)').text().trim(), 'item 1', 'the first item has moved to the second list after left transfer');
+    assert.equal(this.$('.dd-draggable:nth-of-type(6)', '.dd-sortable:nth-of-type(2)').text().trim(), 'item 4', 'the last item has moved to the end of the second list after left transfer');
+
+    $draggable.trigger(leftKey);
+    assert.equal(this.$('.dd-draggable:nth-of-type(5)', '.dd-sortable:nth-of-type(3)').text().trim(), 'item 1', 'the first item has moved to the third list after second left transfer');
+    assert.equal(this.$('.dd-draggable:nth-of-type(6)', '.dd-sortable:nth-of-type(3)').text().trim(), 'item 4', 'the last item has moved to the end of the third list after second left transfer');
+
+    $draggable.trigger(leftKey);
+    assert.equal(this.$('.dd-draggable:nth-of-type(5)', '.dd-sortable:nth-of-type(1)').text().trim(), 'item 1', 'the first item has moved to the first list after third left transfer');
+    assert.equal(this.$('.dd-draggable:nth-of-type(6)', '.dd-sortable:nth-of-type(1)').text().trim(), 'item 4', 'the last item has moved to the end of the first list after third left transfer');
+
+    $draggable.trigger(rightKey);
+    assert.equal(this.$('.dd-draggable:nth-of-type(5)', '.dd-sortable:nth-of-type(3)').text().trim(), 'item 1', 'the first item has moved to the third list after right transfer');
+    assert.equal(this.$('.dd-draggable:nth-of-type(6)', '.dd-sortable:nth-of-type(3)').text().trim(), 'item 4', 'the last item has moved to the end of the third list after right transfer');
+
+    $draggable.trigger(rightKey);
+    assert.equal(this.$('.dd-draggable:nth-of-type(5)', '.dd-sortable:nth-of-type(2)').text().trim(), 'item 1', 'the first item has moved to the second list after second right transfer');
+    assert.equal(this.$('.dd-draggable:nth-of-type(6)', '.dd-sortable:nth-of-type(2)').text().trim(), 'item 4', 'the last item has moved to the end of the second list after second right transfer');
+
+    $draggable.trigger(rightKey);
+    assert.equal(this.$('.dd-draggable:nth-of-type(5)', '.dd-sortable:nth-of-type(1)').text().trim(), 'item 1', 'the first item has moved to the first list after third right transfer');
+    assert.equal(this.$('.dd-draggable:nth-of-type(6)', '.dd-sortable:nth-of-type(1)').text().trim(), 'item 4', 'the last item has moved to the end of the first list after third right transfer');
 });
 
 test('sorting', function(assert) {

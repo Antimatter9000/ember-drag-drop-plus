@@ -2,7 +2,6 @@ import { A } from '@ember/array';
 
 export default {
     attemptGrab(draggableObject, event) {
-        console.log('drag started');
         this._setMultiSelect(event);
         if (this._otherObjectsSelected(draggableObject).length && !this.get('multiSelect')) {
             this.clearDraggedObjects();
@@ -82,7 +81,7 @@ export default {
         draggableObjects.forEach(draggableObject => {
             draggableObject.setProperties({
                 grabbed: true,
-                list: this.get('sortableObjectList'),
+                list: this.get('targetList'),
                 indexInList: this._getIndexInList(draggableObject)
             });
             this._addOrUpdate(draggableObject);
@@ -91,7 +90,7 @@ export default {
 
     _getIndexInList(draggableObject) {
         if (!this.get('dropTarget')) return;
-        const list = this.get('sortableObjectList');
+        const list = this.get('targetList');
         return this.get('dropTarget').get('contentType') === 'data'
             ? list.indexOf(draggableObject.get('content'))
             : list.indexOf(draggableObject.$()[0]);
@@ -101,14 +100,17 @@ export default {
     // if it does, replace the object as the new object will have new properties
     // either way, push the new object to the array
     _addOrUpdate(draggableObject) {
-        if (this._isGrabbed(draggableObject)) {
-            this.get('draggedObjects').removeObject(draggableObject);
+        const existingDraggedObject = this._getExistingDraggedObject(draggableObject);
+        if (existingDraggedObject) {
+            this.get('draggedObjects').removeObject(existingDraggedObject);
         }
         this.get('draggedObjects').pushObject(draggableObject);
     },
 
-    _isGrabbed(draggableObject) {
-        return this.get('draggedObjects').includes(draggableObject);
+    _getExistingDraggedObject(draggableObject) {
+        return this.get('draggedObjects').find(item => {
+            return item.get('content.id') === draggableObject.get('content.id');
+        });
     },
 
     ungrabObject(draggableObject) {
@@ -122,5 +124,9 @@ export default {
         } else {
             this.grabObject(draggableObject);
         }
+    },
+
+    _isGrabbed(draggableObject) {
+        return this.get('draggedObjects').includes(draggableObject);
     },
 }
