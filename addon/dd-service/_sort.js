@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default {
     // moves content up and down depending on position of draggedObject
     sort(event) {

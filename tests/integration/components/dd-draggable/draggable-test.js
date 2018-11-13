@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import a11yAudit from 'ember-a11y-testing/test-support/audit';
+// import a11yAudit from 'ember-a11y-testing/test-support/audit';
 import startApp from '../../../helpers/start-app';
 
 let App;
-moduleForComponent('hc-dragdrop/draggable', 'Integration | Component | hc dragdrop/draggable', {
+moduleForComponent('dd-dragdrop/draggable', 'Integration | Component | dd dragdrop/draggable', {
     integration: true,
     beforeEach() {
         App = startApp();
@@ -16,22 +16,22 @@ moduleForComponent('hc-dragdrop/draggable', 'Integration | Component | hc dragdr
 });
 
 test('it renders', function(assert) {
-    this.render(hbs`{{hc-dragdrop/draggable}}`);
+    this.render(hbs`{{dd-dragdrop/draggable}}`);
 
     assert.equal(this.$().text().trim(), '', 'renders the content');
-    assert.equal(this.$('.hc-draggable').length, 1, 'renders a draggable element');
-    assert.equal(this.$('.hc-draggable').attr('draggable'), 'true', 'draggable object is draggable');
+    assert.equal(this.$('.dd-draggable').length, 1, 'renders a draggable element');
+    assert.equal(this.$('.dd-draggable').attr('draggable'), 'true', 'draggable object is draggable');
 
     // Template block usage:
     this.render(hbs`
-        {{#hc-dragdrop/draggable}}
+        {{#dd-dragdrop/draggable}}
             template block text
-        {{/hc-dragdrop/draggable}}
+        {{/dd-dragdrop/draggable}}
     `);
 
     assert.equal(this.$().text().trim(), 'template block text', 'block renders the block content');
-    assert.equal(this.$('.hc-draggable').length, 1, 'block renders a draggable element');
-    assert.equal(this.$('.hc-draggable').attr('draggable'), 'true', 'draggable object in block is draggable');
+    assert.equal(this.$('.dd-draggable').length, 1, 'block renders a draggable element');
+    assert.equal(this.$('.dd-draggable').attr('draggable'), 'true', 'draggable object in block is draggable');
 
     a11yAudit();
     andThen(() => assert.ok(true, 'no accessibility errors found'));
@@ -39,12 +39,12 @@ test('it renders', function(assert) {
 
 test('clicking', function(assert) {
     this.render(hbs`
-        {{#hc-dragdrop/draggable}}
+        {{#dd-dragdrop/draggable}}
             template block text
-        {{/hc-dragdrop/draggable}}
+        {{/dd-dragdrop/draggable}}
     `);
 
-    const $this = this.$('.hc-draggable');
+    const $this = this.$('.dd-draggable');
 
     $this.trigger('mousedown');
     andThen(() => {
@@ -59,12 +59,12 @@ test('clicking', function(assert) {
 
 test('spacebar', function(assert) {
     this.render(hbs`
-        {{#hc-dragdrop/draggable}}
+        {{#dd-dragdrop/draggable}}
             Template block text
-        {{/hc-dragdrop/draggable}}
+        {{/dd-dragdrop/draggable}}
     `);
 
-    const $this = this.$('.hc-draggable');
+    const $this = this.$('.dd-draggable');
     const e = jQuery.Event('keydown');
 
     e.originalEvent = jQuery.Event();

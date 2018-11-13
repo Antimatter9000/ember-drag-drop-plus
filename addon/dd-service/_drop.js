@@ -1,4 +1,5 @@
 import { run } from '@ember/runloop';
+import { A } from '@ember/array';
 
 export default {
     // finish the drag and delete redundant copies of the draggedObject content

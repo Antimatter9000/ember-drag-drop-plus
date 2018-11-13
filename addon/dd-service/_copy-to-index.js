@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 export default {
     // copy content to a specified index in the list
     copyToIndex(entryIndex, content) {
@@ -19,14 +21,7 @@ export default {
 
     _insertDataCopy(entryIndex, list, content) {
         list.removeObject(content);
-        try {
-            list.insertAt(entryIndex, content);
-        }
-        catch(e) {
-            console.error(`entryIndex: ${entryIndex}`);
-            console.error(`content: ${content}`);
-            console.error(e);
-        }
+        list.insertAt(entryIndex, content);
     },
 
     _insertHTMLCopy(entryIndex, list, content) {

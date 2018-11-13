@@ -9,5 +9,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    'no-console': 'off',
+    "ember/no-global-jquery": 0,
   }
 };

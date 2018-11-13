@@ -148,7 +148,7 @@ export default Component.extend({
         this.get('dragDropService').attemptGrab(this, event);
     },
 
-    doDrop(event) {
+    doDrop() {
         this.set('grabbed', false);
         this.get('dragDropService').drop();
     },
