@@ -16,29 +16,6 @@ moduleForComponent('dd-dragdrop', 'Integration | Component | ddDragdrop', {
     }
 });
 
-const upKey = jQuery.Event('keydown', {
-    originalEvent: { code: 'ArrowUp' },
-    preventDefault: () => false
-});
-
-const downKey = jQuery.Event('keydown', {
-    originalEvent: { code: 'ArrowDown' },
-    preventDefault: () => false
-});
-
-const leftKey = jQuery.Event('keydown', {
-    originalEvent: { code: 'ArrowLeft' },
-    preventDefault: () => false
-});
-
-const rightKey = jQuery.Event('keydown', {
-    originalEvent: { code: 'ArrowRight' },
-    preventDefault: () => false
-});
-
-const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
-const shiftClick = jQuery.Event('mousedown', { shiftKey: true }););
-
 test('it renders', function(assert) {
     this.render(hbs`{{dd-dragdrop}}`);
 
@@ -56,6 +33,29 @@ test('it renders', function(assert) {
 });
 
 test('multiselect - selecting', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -145,6 +145,29 @@ test('multiselect - selecting', function(assert) {
 });
 
 test('multiselect - ctrlClick shifting up - ascending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -248,6 +271,29 @@ test('multiselect - ctrlClick shifting up - ascending index order of clicks', fu
 });
 
 test('multiselect - ctrlClick shifting up - descending order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -351,6 +397,29 @@ test('multiselect - ctrlClick shifting up - descending order of clicks', functio
 });
 
 test('multiselect - shiftClick shifting up - ascending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -455,6 +524,29 @@ test('multiselect - shiftClick shifting up - ascending index order of clicks', f
 });
 
 test('multiselect - shiftClick shifting up - descending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -559,6 +651,29 @@ test('multiselect - shiftClick shifting up - descending index order of clicks', 
 });
 
 test('multiselect - ctrlClick shifting down - ascending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -658,6 +773,29 @@ test('multiselect - ctrlClick shifting down - ascending index order of clicks', 
 });
 
 test('multiselect - ctrlClick shifting down - descending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -757,6 +895,29 @@ test('multiselect - ctrlClick shifting down - descending index order of clicks',
 });
 
 test('multiselect - shiftClick shifting down - ascending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -861,6 +1022,29 @@ test('multiselect - shiftClick shifting down - ascending index order of clicks',
 });
 
 test('multiselect - shiftClick shifting down - descending index order of clicks', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     const list = Ember.A([
         {
             id: 0,
@@ -965,6 +1149,29 @@ test('multiselect - shiftClick shifting down - descending index order of clicks'
 });
 
 test('transfer - single item', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     this.set('sortableObjectList1', Ember.A([{
         id: 0,
         value: 'item 1'
@@ -1070,6 +1277,29 @@ test('transfer - single item', function(assert) {
 });
 
 test('transfer - multiple items', function(assert) {
+    const upKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowUp' },
+        preventDefault: () => false
+    });
+
+    const downKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowDown' },
+        preventDefault: () => false
+    });
+
+    const leftKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowLeft' },
+        preventDefault: () => false
+    });
+
+    const rightKey = jQuery.Event('keydown', {
+        originalEvent: { code: 'ArrowRight' },
+        preventDefault: () => false
+    });
+
+    const ctrlClick = jQuery.Event('mousedown', { ctrlKey: true });
+    const shiftClick = jQuery.Event('mousedown', { shiftKey: true });
+
     this.set('sortableObjectList1', Ember.A([{
         id: 0,
         value: 'item 1'
@@ -1153,7 +1383,7 @@ test('transfer - multiple items', function(assert) {
     `);
 
     this.$('.dd-draggable:nth-of-type(1)').trigger('mousedown');
-    $draggable = this.$('.dd-draggable:nth-of-type(4)');
+    const $draggable = this.$('.dd-draggable:nth-of-type(4)');
     $draggable.trigger(ctrlClick);
 
     $draggable.trigger(leftKey);

@@ -18,7 +18,6 @@ export default {
     },
 
     _shiftObject(draggedObject, direction) {
-        const content = draggedObject.get('content');
         const itemIndex = draggedObject.get('indexInList');
         const list = draggedObject.get('list');
         const targetIndex = this._getTargetItemIndex(draggedObject, direction);

@@ -155,6 +155,6 @@ export default Component.extend({
 
     cancelDrag() {
         this.set('grabbed', false);
-        this.get('dragDropService').set('draggedObject', null);
+        this.get('dragDropService').set('draggedObject', null); // TODO: There's no way this can work any more. It's not causing any problems, so decide whether to fix or delete it
     }
 });
