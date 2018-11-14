@@ -4,10 +4,12 @@ export default {
     // moves content up and down depending on position of draggedObject
     sort(event) {
         const currentHoveredItem = this._getCurrentHoveredItem(event);
-        const content = this.get('draggedObjects').get('content');
-        if (this._isNotHoveringOverSelf(content, currentHoveredItem)) {
+        console.log(currentHoveredItem);
+        if (this._isNotHoveringOverSelf(currentHoveredItem)) {
             const entryIndex = this._getEntryIndex(event, currentHoveredItem);
-            this.copyToIndex(entryIndex, content);
+            this.get('draggedObjects').forEach(draggedObject => {
+                this.copyToIndex(entryIndex, draggedObject.get('content'));
+            });
         }
     },
 
@@ -31,9 +33,15 @@ export default {
 
     // check the draggedObject isn't hovering over a copy of itself so it
     // doesn't go into a crazy loop
-    _isNotHoveringOverSelf(content, currentHoveredItem) {
+    _isNotHoveringOverSelf(currentHoveredItem) {
         if (!currentHoveredItem) return true;
-        return content !== currentHoveredItem.get('content');
+        let notHoveringOverSelf = true;
+        this.get('draggedObjects').forEach(draggedObject => {
+            if (draggedObject.get('content') === currentHoveredItem.get('content')) {
+                notHoveringOverSelf = false;
+            }
+        })
+        return notHoveringOverSelf;
     },
 
     _dropTargetIsEmpty() {
