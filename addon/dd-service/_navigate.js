@@ -52,9 +52,9 @@ export default {
         }
     },
 
-    _contentExists(content, list) {
+    _contentExists(content) {
         return this.get('dropTarget').get('contentType') === 'data'
-            ? this.get('dropTarget').get('sortableObjectList').includes(content)
+            ? this.get('targetList').includes(content)
             : this.get('dropTarget').$().find(content);
     },
 

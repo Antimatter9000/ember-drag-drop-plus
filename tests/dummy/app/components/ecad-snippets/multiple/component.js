@@ -23,5 +23,11 @@ export default Ember.Component.extend({
       {id: 13, name: 'thirteen'},
       {id: 14, name: 'fourteen'},
       {id: 15, name: 'fifteen'}
-  ])
+  ]),
+
+  actions: {
+    keyPressed(cpnt, event) {
+      event.stopImmediatePropagation();
+    }
+  }
 });
